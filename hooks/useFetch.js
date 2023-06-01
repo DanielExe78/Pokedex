@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
-const API_ENDPOINT = "https://pokeapi.co/api/v2/pokemon/charmander";
+const API_ENDPOINT = `https://pokeapi.co/api/v2/pokemon/?limit=150`;
 
 const useFetch = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,10 +13,21 @@ const useFetch = () => {
       const response = await fetch(url);
       const data = await response.json();
 
-      setData(data);
+      const promises = data.results.map(async (pokemon) => {
+        const res = await fetch(pokemon.url);
+        const data = await res.json();
+
+        return data;
+      });
+      const results = await Promise.all(promises);
+      setData(results);
       setIsLoading(false);
+      setError({ msg: "", show: false });
     } catch (error) {
-      setError({ msg: error.message, show: true });
+      setError({
+        msg: "The page you are trying to reach was not found...",
+        show: true,
+      });
     }
   };
 
