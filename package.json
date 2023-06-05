@@ -16,11 +16,8 @@
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-<<<<<<< Updated upstream
-=======
     "react-icons": "^4.9.0",
     "swiper": "^9.3.2",
->>>>>>> Stashed changes
     "tailwindcss": "3.3.2"
   }
 }
