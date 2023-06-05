@@ -1,5 +1,13 @@
+<<<<<<< Updated upstream
 import './globals.css'
 import { Inter } from 'next/font/google'
+=======
+import "./globals.css";
+import { Inter } from "next/font/google";
+import NavBar from "../../components/NavBar";
+import { AppProvider } from "../../context/Context";
+import ToggleTheme from "../../components/ToggleTheme";
+>>>>>>> Stashed changes
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,7 +19,19 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+<<<<<<< Updated upstream
       <body className={inter.className}>{children}</body>
+=======
+      <body className={inter.className}>
+        <AppProvider>
+          <header className="bg-red-600">
+            <NavBar />
+          </header>
+          <ToggleTheme />
+          {children}
+        </AppProvider>
+      </body>
+>>>>>>> Stashed changes
     </html>
   )
 }
